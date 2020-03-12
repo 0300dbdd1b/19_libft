@@ -17,7 +17,8 @@ LIGHT_CYAN		=	\033[1;33m
 WHITE			=	\033[1;37m
 NC				=	\033[0m
 
-
+SRCDIR		=	./srcs/
+INCDIR		=	./includes/
 SRCNAME		= 	ft_memset.c			\
 				ft_bzero.c			\
 				ft_memcpy.c			\
@@ -48,12 +49,16 @@ SRCNAME		= 	ft_memset.c			\
 				ft_split.c			\
 				ft_itoa.c			\
 				ft_strmapi.c		\
+				ft_putchar.c		\
+				ft_putstr.c			\
+				ft_putnbr.c			\
+				ft_putnbr_base.c	\
 				ft_putchar_fd.c		\
 				ft_putstr_fd.c		\
 				ft_putendl_fd.c 	\
 				ft_putnbr_fd.c		\
-
-BONUSNAME	=	ft_lstnew.c			\
+				ft_putnbr_base_fd.c \
+				ft_lstnew.c			\
 				ft_lstadd_front.c	\
 				ft_lstsize.c		\
 				ft_lstlast.c		\
@@ -63,70 +68,46 @@ BONUSNAME	=	ft_lstnew.c			\
 				ft_lstiter.c		\
 				ft_lstmap.c			\
 
-
-OBJS		= 	${SRCNAME:.c=.o}
-BONUSOBJS	=	${BONUSNAME:.c=.o}
+SRCS		= 	${addprefix ${SRCDIR}, ${SRCNAME}}
+OBJS		= 	${SRCS:.c=.o}
 
 CC			= 	@gcc
 CFLAGS 		=	-Wall -Werror -Wextra
 
 .c.o        :
-				@clear
 				@echo "${ORANGE}Compilation of $<...${NC}"
-				${CC} ${CFLAGS} -I libft.h -c $< -o ${<:.c=.o}
+				${CC} ${CFLAGS} -I ./includes/ -c $< -o ${<:.c=.o}
 
 
 
 NAME		= 	libft.a
 $(NAME) 	: 	${OBJS}
-				@clear
 				@ar rc ${NAME} ${OBJS}
-				@echo "${LIGHT_GREEN}Created.${NC}"
+				@echo "${LIGHT_GREEN}Libft.a Created.${NC}"
 
 
-all:		${NAME}					## Cree la base de la Bibliotheque Statique "libft.a"
-			@clear
-			@echo "${LIGHT_RED}Creating library...${NC}"
+all:		${NAME}					## Cree la base de la Bibliotheque Statique "libft.a
 
-clean:								## Supprime tout les .o inclus dans la bibliotheque "libft.a"
-			@clear
-			@rm -f ${OBJS} ${BONUSOBJS}
+clean:								## Supprime tout les .o inclus dans la bibliotheque "libft.a
+			@rm -f ${OBJS}
 			@echo "${LIGHT_GREEN}Clean.${NC}"
 
-fclean:		clean					## Supprime la Bibliotheque Statique et ses fichiers objets
-			@clear
+fclean:								## Supprime la Bibliotheque Statique et ses fichiers objet
+			@rm -f ${OBJS}
 			@rm -f ${NAME}
 			@echo "${LIGHT_GREEN}All Clean.${NC}"
 
 re:			fclean all   			## Supprime et recompile la Bibliotheque Smaketatique avec ses fichiers objets
 
-bonus:		${OBJS} ${BONUSOBJS}	## Cree une bibliotheque libft.a incluant les bonus
-			@clear
-			@echo "${LIGHT_RED}Creating library with bonus...${NC}"
-			@ar rc ${NAME} ${OBJS} ${BONUSOBJS}
-			@ranlib ${NAME}
-			@echo "${LIGHT_GREEN}Created.${NC}"
 
-complete:	${OBJS} ${BONUSOBJS}	## Met a jour la libft.a dans sa derniere version
-			@clear
-			@echo "${LIGHT_RED}Updating library...${NC}" 
-			@ar rc ${NAME} ${OBJS} ${BONUSOBJS}
-			@ranlib ${NAME}
-			@echo "${LIGHT_GREEN}Updated.${NC}"
 
-it:			fclean complete			## recompile completement la libft.a
-			@clear
-			@rm ${SRCDIR}*.o
-			@echo "${LIGHT_GREEN}Clean.${NC}"
-
-help:								## Liste toutes les commandes
-	@clear
+help:								## Liste toutes les comman
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 man:								## Infos Concernant la lib
 	@echo "${LIGHT_GRAY}=================================================${NC}"
 	@echo "${LIGHT_PURPLE} Project${NC} : ${LIGHT_GREEN}LIBFT${NC}"
-	@echo "${LIGHT_PURPLE} Version${NC} : V.0.0.3"
+	@echo "${LIGHT_PURPLE} Version${NC} : V.0.1.4"
 	@echo "${LIGHT_PURPLE} Author${NC} : ADDINO Noah"
 	@echo ""
 	@echo "${LIGHT_PURPLE} Includes Files${NC} : <unistd.h> | <string.h> | <limits.h> | <stdlib.h>"

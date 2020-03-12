@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naddino <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: naddino <naddino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:37:55 by naddino           #+#    #+#             */
-/*   Updated: 2020/01/18 16:09:28 by naddino          ###   ########.fr       */
+/*   Updated: 2020/03/12 17:40:31 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,15 @@ char		**ft_split(char const *s, char c);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_putendl(char const *s);
+void		ft_putchar(char c);
+void		ft_putstr(char *str);
+void		ft_putnbr(int n);
+void		ft_putnbr_base(int nbr, char *base);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char const *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
+void		ft_putnbr_base_fd(int nbr, char *base, int fd);
 
 /*
 **			===== Partie Bonus =====
