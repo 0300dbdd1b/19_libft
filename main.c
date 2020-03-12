@@ -2,5 +2,5 @@
 
 int main(int ac, char **av)
 {
-	ft_putnbr_base_fd(atoi(av[1]), BIN_BASE, 1);
+	ft_putnbr(ft_atoi_base(av[1], av[2]));
 }

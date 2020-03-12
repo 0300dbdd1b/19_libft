@@ -6,7 +6,7 @@
 /*   By: naddino <naddino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:37:55 by naddino           #+#    #+#             */
-/*   Updated: 2020/03/12 18:31:09 by naddino          ###   ########.fr       */
+/*   Updated: 2020/03/13 00:44:03 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char		*ft_strrchr(const char *s, int c);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_atoi(const char *str);
+int			ft_atoi_base(char *str, char *base);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
