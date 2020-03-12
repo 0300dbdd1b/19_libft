@@ -6,18 +6,22 @@
 /*   By: naddino <naddino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:37:55 by naddino           #+#    #+#             */
-/*   Updated: 2020/03/12 17:40:31 by naddino          ###   ########.fr       */
+/*   Updated: 2020/03/12 18:31:09 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define BIN_BASE "01"
+# define OCT_BASE "012345678"
+# define DEC_BASE "0123456789"
+# define HEX_BASE "0123456789ABCDEF"
+
 # include <string.h>
 # include <limits.h>
 # include <unistd.h>
 # include <stdlib.h>
-
 /*
 **			===== Premiere Partie =====
 */
@@ -51,6 +55,7 @@ char		*ft_strdup(const char *s1);
 **			===== Deuxieme Partie =====
 */
 
+int			ft_check_base(char *base);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
@@ -67,7 +72,6 @@ void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char const *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putnbr_base_fd(int nbr, char *base, int fd);
-
 /*
 **			===== Partie Bonus =====
 */
