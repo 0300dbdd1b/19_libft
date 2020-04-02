@@ -6,7 +6,7 @@
 /*   By: naddino <naddino@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:37:55 by naddino           #+#    #+#             */
-/*   Updated: 2020/03/13 00:44:03 by naddino          ###   ########.fr       */
+/*   Updated: 2020/04/02 11:41:33 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,11 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/*
+**			===== ADDED =====
+*/
+unsigned long long
+			ft_strtoull(const char *str);
 
 #endif
