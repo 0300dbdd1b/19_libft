@@ -1,6 +1,6 @@
 # Libft
 
-![19logo](https://github.com/Marcaday/19_Subjects/blob/master/19logo.jpg)
+![19logo](https://github.com/Marcaday/19_Subjects/blob/master/19logo.png)
 19 Coding School project
 
 "The aim of this project is to code a C library regrouping usual functions that
