@@ -22,6 +22,9 @@
 # include <limits.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# include "../srcs/get_next_line/ft_get_next_line.h"
+
 /*
 **			===== Premiere Partie =====
 */

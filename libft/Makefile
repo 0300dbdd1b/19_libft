@@ -17,6 +17,7 @@ LIGHT_CYAN		=	\033[1;33m
 WHITE			=	\033[1;37m
 NC				=	\033[0m
 
+GNLDIR		=	./srcs/get_next_line/
 SRCDIR		=	./srcs/
 INCDIR		=	./includes/
 SRCNAME		= 	ft_memset.c			\
@@ -71,7 +72,12 @@ SRCNAME		= 	ft_memset.c			\
 				ft_lstiter.c		\
 				ft_lstmap.c			\
 
+GNL_SRC		=	ft_get_next_line.c			\
+
+GNL			=	${addprefix ${GNLDIR}, ${GNL_SRC}}
 SRCS		= 	${addprefix ${SRCDIR}, ${SRCNAME}}
+
+GNL_OBJS	=	${GNL:.c=.o}
 OBJS		= 	${SRCS:.c=.o}
 
 CC			= 	@gcc
@@ -84,36 +90,28 @@ CFLAGS 		=	-Wall -Werror -Wextra
 
 
 NAME		= 	libft.a
-$(NAME) 	: 	${OBJS}
-				@ar rc ${NAME} ${OBJS}
+$(NAME) 	: 	${OBJS} ${GNL_OBJS}
+				@ar rc ${NAME} ${OBJS} ${GNL_OBJS}
 				@echo "${LIGHT_GREEN}Libft.a Created.${NC}"
 
 
 all:		${NAME}					## Cree la base de la Bibliotheque Statique "libft.a
 
 clean:								## Supprime tout les .o inclus dans la bibliotheque "libft.a
-			@rm -f ${OBJS}
+			@rm -f ${OBJS} ${GNL_OBJS}
 			@echo "${LIGHT_GREEN}Clean.${NC}"
 
 fclean:								## Supprime la Bibliotheque Statique et ses fichiers objet
-			@rm -f ${OBJS}
+			@rm -f ${OBJS} ${GNL_OBJS}
 			@rm -f ${NAME}
 			@echo "${LIGHT_GREEN}All Clean.${NC}"
 
 re:			fclean all   			## Supprime et recompile la Bibliotheque Smaketatique avec ses fichiers objets
 
+x:			all clean
 
-
-help:								## Liste toutes les comman
+help:								## Liste toutes les commandes
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-man:								## Infos Concernant la lib
-	@echo "${LIGHT_GRAY}=================================================${NC}"
-	@echo "${LIGHT_PURPLE} Project${NC} : ${LIGHT_GREEN}LIBFT${NC}"
-	@echo "${LIGHT_PURPLE} Version${NC} : V.0.1.4"
-	@echo "${LIGHT_PURPLE} Author${NC} : ADDINO Noah"
-	@echo ""
-	@echo "${LIGHT_PURPLE} Includes Files${NC} : <unistd.h> | <string.h> | <limits.h> | <stdlib.h>"
-	@echo "${LIGHT_PURPLE} Extra Files${NC} : No Extra Files "
-	@echo "${LIGHT_GRAY}=================================================${NC}"
-.PHONY	= 	all clean fclean re
+
+.PHONY	= 	all clean fclean re x
