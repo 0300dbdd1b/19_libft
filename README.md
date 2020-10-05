@@ -28,6 +28,5 @@ Moulinette:
 
 - [x] correction
 - [x] base converter implementation
-- [ ] optimisation
-- [ ] get_next_line implementation
+- [x] get_next_line implementation
 - [ ] ft_printf implementation
