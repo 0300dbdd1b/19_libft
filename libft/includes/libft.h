@@ -6,7 +6,7 @@
 /*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:37:55 by naddino           #+#    #+#             */
-/*   Updated: 2021/05/04 16:55:44 by naddino          ###   ########.fr       */
+/*   Updated: 2021/05/04 17:26:00 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ struct		s_list
 	void			*content;
 	struct s_list	*next;
 };
-typedef struct s_list	t_list;
+typedef struct s_list		t_list;
 
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **alst, t_list *new);
@@ -103,7 +103,8 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /*
 **			===== ADDED =====
 */
-unsigned long long
-			ft_strtoull(const char *str);
+typedef unsigned long long	t_ull;
+
+t_ull		ft_strtoull(const char *str);
 
 #endif
