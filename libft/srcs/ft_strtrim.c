@@ -3,67 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naddino <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 16:30:28 by naddino           #+#    #+#             */
-/*   Updated: 2020/01/14 19:03:29 by naddino          ###   ########.fr       */
+/*   Updated: 2021/05/04 16:04:38 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		is_in_set(char c, const char *set)
+static int	is_in_set(char const c, char const *set)
 {
-	size_t x;
+	size_t	i;
 
-	x = 0;
-	while (set[x])
+	i = 0;
+	while (set[i])
 	{
-		if (c == set[x])
+		if (set[i] == c)
 			return (1);
-		x++;
+		i++;
 	}
 	return (0);
 }
 
-static size_t	cut_set(const char *str, const char *set, int bool)
+static size_t	counter(char const *s1, char const *set)
 {
-	size_t	x;
+	size_t	i;
+	size_t	count;
 
-	x = 0;
-	if (bool == 0)
+	i = 0;
+	count = 0;
+	while (is_in_set(s1[i], set) && s1[i])
 	{
-		while (is_in_set(str[x], set))
-			x++;
-		return (x);
+		count++;
+		i++;
 	}
-	else if (bool == 1)
+	if (s1[i])
 	{
-		x = ft_strlen(str) - 1;
-		while (is_in_set(str[x], set) && x > 0)
-			x--;
-		return (x);
+		i = ft_strlen(s1) - 1;
+		while (is_in_set(s1[i], set))
+		{
+			count++;
+			i--;
+		}
 	}
-	return (x);
+	return (count);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	start;
-	size_t	end;
-	char	*output;
+	size_t	count;
+	size_t	len;
+	size_t	i_s1;
+	size_t	i_res;
+	char	*res;
 
-	if (s1 && !set)
-		return ((char *)s1);
-	else if (!s1)
-		return (NULL);
-	start = cut_set(s1, set, 0);
-	end = cut_set(s1, set, 1) + 1;
-	if (start >= end)
-		return (malloc(0));
-	if (!(output = malloc(sizeof(char) * (end - start) + 1)))
-		return (NULL);
-	ft_memcpy((void *)output, (void *)s1 + start, (end - start));
-	output[end - start] = '\0';
-	return (output);
+	if (!s1 || !set)
+		return (0);
+	count = counter(s1, set);
+	len = ft_strlen(s1) - count;
+	i_s1 = 0;
+	i_res = 0;
+	res = malloc(sizeof(*s1) * (len + 1));
+	if (!res)
+		return (0);
+	res[len] = '\0';
+	while (is_in_set(s1[i_s1], set) && s1[i_s1])
+		i_s1++;
+	while (i_res < len)
+	{
+		res[i_res] = s1[i_s1];
+		i_s1++;
+		i_res++;
+	}
+	return (res);
 }

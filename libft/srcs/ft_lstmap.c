@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naddino <naddino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:46:45 by naddino           #+#    #+#             */
-/*   Updated: 2020/02/02 05:07:57 by naddino          ###   ########.fr       */
+/*   Updated: 2021/05/04 15:39:41 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst)
 		return (NULL);
-	if (!(mynewlist = ft_lstnew(f(lst->content))))
+	mynewlist = ft_lstnew(f(lst->content));
+	if (!mynewlist)
 		return (NULL);
 	first = mynewlist;
 	while (lst)
 	{
 		if (lst->next)
 		{
-			if (!(mynewlist->next = ft_lstnew(f(lst->next->content))))
+			mynewlist->next = ft_lstnew(f(lst->next->content));
+			if (!mynewlist->next)
 			{
 				ft_lstclear(&first, del);
 				return (0);

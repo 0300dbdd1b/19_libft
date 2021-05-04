@@ -3,58 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naddino <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 23:46:24 by naddino           #+#    #+#             */
-/*   Updated: 2020/01/14 14:16:43 by naddino          ###   ########.fr       */
+/*   Updated: 2021/05/04 15:36:18 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int			get_len(int n)
+static size_t	number_size(int n)
 {
-	int				len;
-	unsigned int	absol;
+	size_t	size;
 
-	len = 1;
-	absol = n;
-	if (n < 0)
+	size = 0;
+	if (n <= 0)
+		size++;
+	while (n != 0)
 	{
-		len++;
-		absol *= -1;
+		n /= 10;
+		size++;
 	}
-	while (absol >= 10)
-	{
-		absol /= 10;
-		len++;
-	}
-	return (len);
+	return (size);
 }
 
-char				*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	unsigned int	absol;
-	char			*output;
-	int				len;
+	char	*res;
+	int		sign;
+	size_t	i;
 
-	len = get_len(n);
-	absol = n;
-	if (!(output = malloc(sizeof(char) * (len + 1))))
+	i = number_size(n);
+	sign = 1;
+	res = malloc(sizeof(*res) * (i + 1));
+	if (!res)
 		return (0);
-	output[len] = '\0';
-	if (n == 0 && (output[0] = '0'))
-		return (output);
+	res[i] = 0;
+	i--;
 	if (n < 0)
 	{
-		output[0] = 45;
-		absol *= -1;
+		sign *= -1;
+		res[0] = '-';
 	}
-	while (absol != 0)
+	if (n == 0)
+		res[i] = '0';
+	while (n != 0)
 	{
-		output[len - 1] = absol % 10 + '0';
-		absol /= 10;
-		len--;
+		res[i] = ((n % 10) * sign) + 48;
+		n /= 10;
+		i--;
 	}
-	return (output);
-}
+	return (res);

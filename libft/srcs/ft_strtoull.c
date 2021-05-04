@@ -1,7 +1,7 @@
-unsigned long long		ft_strtoull(const char *str)
+unsigned long long	ft_strtoull(const char *str)
 {
-	unsigned long long 		x;
-	unsigned long long		output;
+	unsigned long long	x;
+	unsigned long long	output;
 
 	x = 0;
 	output = 0;

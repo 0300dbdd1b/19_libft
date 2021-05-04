@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naddino <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 08:18:38 by naddino           #+#    #+#             */
-/*   Updated: 2020/01/14 14:46:11 by naddino          ###   ########.fr       */
+/*   Updated: 2021/05/04 15:58:07 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strdup(const char *s1)
 	size_t	size;
 
 	size = ft_strlen(s1) + 1;
-	if (!(dest = (char *)malloc(sizeof(char) * size)))
+	dest = (char *)malloc(sizeof(char) * size);
+	if (!dest)
 		return (NULL);
 	ft_memcpy(dest, s1, size);
 	return (dest);

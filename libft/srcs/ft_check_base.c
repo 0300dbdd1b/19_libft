@@ -1,9 +1,9 @@
 #include "libft.h"
 
-int		ft_check_base(char *base)
+int	ft_check_base(char *base)
 {
-	int x;
-	int i;
+	int	x;
+	int	i;
 
 	i = 0;
 	if (!base || !base[0] || !base[1])

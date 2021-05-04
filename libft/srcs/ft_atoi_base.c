@@ -1,8 +1,8 @@
 #include "libft.h"
 
-static int		ft_search_index(char index, char *base)
+static int	ft_search_index(char index, char *base)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (base[x])
@@ -14,7 +14,7 @@ static int		ft_search_index(char index, char *base)
 	return (-1);
 }
 
-int				ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	long int	neg;
 	long int	nb;
@@ -26,7 +26,7 @@ int				ft_atoi_base(char *str, char *base)
 	if (ft_check_base(base) != 0)
 	{
 		while (str[x] == '\t' || str[x] == '\v' || str[x] == '\n'
-				|| str[x] == '\r' || str[x] == '\f' || str[x] == ' ')
+			 || str[x] == '\r' || str[x] == '\f' || str[x] == ' ')
 			x++;
 		while (str[x] == '-' || str[x] == '+')
 		{

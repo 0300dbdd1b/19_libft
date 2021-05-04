@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naddino <naddino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 14:07:12 by naddino           #+#    #+#             */
-/*   Updated: 2020/01/07 20:38:29 by naddino          ###   ########.fr       */
+/*   Updated: 2021/05/04 15:18:34 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int						x;
-	int						neg;
-	unsigned long long		output;
+	int				sign;
+	long int		result;
+	size_t			i;
 
-	x = 0;
-	neg = 1;
-	output = 0;
-	while (str[x] == ' ' || str[x] == '\t' || str[x] == '\v'
-		|| str[x] == '\n' || str[x] == '\r' || str[x] == '\f')
-		x++;
-	if (str[x] == '-' || str[x] == '+')
+	i = 0;
+	sign = -1;
+	result = 0;
+	while (ft_isspace((int)str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		if (str[i++] == '-')
+			sign *= -1;
+	while (ft_isdigit((int)str[i]))
 	{
-		if (str[x] == '-')
-			neg *= -1;
-		x++;
+		result = (result * 10) - (str[i++] - 48);
+		if (result > 0)
+		{
+			if (sign > 0)
+				return (0);
+			else
+				return (-1);
+		}
 	}
-	while (str[x] <= '9' && str[x] >= '0' && str[x])
-	{
-		output = output * 10 + str[x] - '0';
-		if (output > LONG_MAX)
-			return ((neg == 1) ? -1 : 0);
-		x++;
-	}
-	return ((int)((output) * (neg)));
+	return (result * sign);
 }
