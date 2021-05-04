@@ -6,13 +6,13 @@
 /*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 16:20:30 by naddino           #+#    #+#             */
-/*   Updated: 2021/05/04 16:20:58 by naddino          ###   ########.fr       */
+/*   Updated: 2021/05/04 17:05:11 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_get_next_line.h"
 
-int	get_next_line(int fd, char **line)
+int	ft_get_next_line(int fd, char **line)
 {
 	static char	buf[OPEN_MAX][BUFFER_SIZE + 1];
 	char		*res;
