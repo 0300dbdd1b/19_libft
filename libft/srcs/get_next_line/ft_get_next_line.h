@@ -6,7 +6,7 @@
 /*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 14:16:13 by naddino           #+#    #+#             */
-/*   Updated: 2021/05/04 16:34:15 by naddino          ###   ########.fr       */
+/*   Updated: 2021/05/04 16:43:08 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #  define BUFFER_SIZE 64
 # endif
 
-# ifdef OPEN_MAX
+# ifndef OPEN_MAX
 #	define OPEN_MAX _SC_OPEN_MAX
 # endif
 

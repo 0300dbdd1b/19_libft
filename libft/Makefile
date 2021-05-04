@@ -28,11 +28,13 @@ SRCNAME		= 	ft_memset.c			\
 				ft_memchr.c			\
 				ft_memcmp.c			\
 				ft_strlen.c			\
+				ft_strnlen.c		\
 				ft_isalpha.c		\
 				ft_isdigit.c		\
 				ft_isalnum.c		\
 				ft_isascii.c		\
 				ft_isprint.c		\
+				ft_isspace.c		\
 				ft_toupper.c		\
 				ft_tolower.c		\
 				ft_strchr.c			\
@@ -73,9 +75,10 @@ SRCNAME		= 	ft_memset.c			\
 				ft_lstmap.c			\
 				ft_strcmp.c			\
 
-GNL_SRC		=	ft_get_next_line.c			\
+GNL_SRCS		=	ft_get_next_line.c			\
+					ft_get_next_line_utils.c	\
 
-GNL			=	${addprefix ${GNLDIR}, ${GNL_SRC}}
+GNL			=	${addprefix ${GNLDIR}, ${GNL_SRCS}}
 SRCS		= 	${addprefix ${SRCDIR}, ${SRCNAME}}
 
 GNL_OBJS	=	${GNL:.c=.o}

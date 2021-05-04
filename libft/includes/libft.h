@@ -6,7 +6,7 @@
 /*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:37:55 by naddino           #+#    #+#             */
-/*   Updated: 2021/04/15 17:14:52 by naddino          ###   ########.fr       */
+/*   Updated: 2021/05/04 16:55:44 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t		ft_strlen(const char *s);
+size_t		ft_strnlen(const char *str, size_t n);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlcat(char *dest, const char *src, size_t size);
 char		*ft_strchr(const char *s, int c);
@@ -50,6 +51,7 @@ int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_isascii(int c);
+int			ft_isspace(int c);
 int			ft_isprint(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
