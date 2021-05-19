@@ -29,4 +29,5 @@ Moulinette:
 - [x] correction
 - [x] base converter implementation
 - [x] get_next_line implementation
+- [x] normV3
 - [ ] ft_printf implementation
