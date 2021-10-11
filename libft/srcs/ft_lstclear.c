@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naddino <naddino@student.42.fr>            +#+  +:+       +#+        */
+/*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 18:30:27 by naddino           #+#    #+#             */
-/*   Updated: 2020/01/20 18:46:22 by naddino          ###   ########.fr       */
+/*   Updated: 2021/10/11 23:43:25 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*current;
-	t_list	*tmp;
+	t_list	*item;
+	t_list	*next_item;
 
-	if (!del || !lst)
+	if (!lst || !*lst || !del)
 		return ;
-	current = *lst;
-	while (current)
+	if ((*lst)->prev)
+		(*lst)->prev->next = NULL;
+	item = *lst;
+	while (item)
 	{
-		tmp = current->next;
-		(del)(current->content);
-		free(current);
-		current = tmp;
+		next_item = item->next;
+		ft_lstdelone(item, del);
+		item = next_item;
 	}
 	*lst = NULL;
 }

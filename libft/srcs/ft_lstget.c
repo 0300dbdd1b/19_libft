@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstget.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/16 18:28:11 by naddino           #+#    #+#             */
-/*   Updated: 2021/10/11 23:43:44 by naddino          ###   ########.fr       */
+/*   Created: 2021/10/11 23:37:53 by naddino           #+#    #+#             */
+/*   Updated: 2021/10/12 00:12:57 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+t_list	*ft_lstget(t_list *lst, int i)
 {
-	if (!lst || !del)
-		return ;
-	(*del)(lst->data);
-	free(lst);
+	t_list	*item;
+
+	item = lst;
+	while (i < 0 && item)
+	{
+		item = item->prev;
+		i++;
+	}
+	while (i > 0 && item)
+	{
+		item = item->next;
+		i--;
+	}
+	return (item);
 }

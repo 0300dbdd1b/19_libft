@@ -6,7 +6,7 @@
 /*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 12:46:45 by naddino           #+#    #+#             */
-/*   Updated: 2021/05/04 15:39:41 by naddino          ###   ########.fr       */
+/*   Updated: 2021/10/11 23:45:06 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*mynewlist;
-	t_list	*first;
+	t_list	*lstmap;
+	t_list	*lst_current;
 
-	if (!lst)
+	if (!lst || !f)
 		return (NULL);
-	mynewlist = ft_lstnew(f(lst->content));
-	if (!mynewlist)
-		return (NULL);
-	first = mynewlist;
+	if (lst->prev)
+		lst->prev->next = NULL;
+	lstmap = NULL;
 	while (lst)
 	{
-		if (lst->next)
+		if (lst->prev)
+			lst_current = ft_lstnew_circ((*f)(lst->data));
+		else
+			lst_current = ft_lstnew((*f)(lst->data));
+		if (!lst_current)
 		{
-			mynewlist->next = ft_lstnew(f(lst->next->content));
-			if (!mynewlist->next)
-			{
-				ft_lstclear(&first, del);
-				return (0);
-			}
-			mynewlist = mynewlist->next;
+			ft_lstclear(&lstmap, del);
+			return (NULL);
 		}
+		ft_lstadd_back(&lstmap, lst_current);
 		lst = lst->next;
 	}
-	mynewlist->next = NULL;
-	return (first);
+	if (lst->prev)
+		lst->prev->next = lst;
+	return (lstmap);
 }

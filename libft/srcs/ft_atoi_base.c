@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/12 00:13:21 by naddino           #+#    #+#             */
+/*   Updated: 2021/10/12 00:14:52 by naddino          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	ft_search_index(char index, char *base)
@@ -26,7 +38,7 @@ int	ft_atoi_base(char *str, char *base)
 	if (ft_check_base(base) != 0)
 	{
 		while (str[x] == '\t' || str[x] == '\v' || str[x] == '\n'
-			 || str[x] == '\r' || str[x] == '\f' || str[x] == ' ')
+			|| str[x] == '\r' || str[x] == '\f' || str[x] == ' ')
 			x++;
 		while (str[x] == '-' || str[x] == '+')
 		{

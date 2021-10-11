@@ -6,20 +6,21 @@
 /*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 16:54:57 by naddino           #+#    #+#             */
-/*   Updated: 2021/05/04 15:40:28 by naddino          ###   ########.fr       */
+/*   Updated: 2021/10/12 00:11:56 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *data)
 {
-	t_list	*new;
+	t_list	*list;
 
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	list = malloc(sizeof(t_list));
+	if (!list)
+		return (NULL);
+	list->data = data;
+	list->prev = NULL;
+	list->next = NULL;
+	return (list);
 }

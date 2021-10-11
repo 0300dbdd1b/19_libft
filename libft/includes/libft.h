@@ -6,7 +6,7 @@
 /*   By: naddino <naddino@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:37:55 by naddino           #+#    #+#             */
-/*   Updated: 2021/05/04 17:26:00 by naddino          ###   ########.fr       */
+/*   Updated: 2021/10/12 00:05:16 by naddino          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,9 @@ void		ft_putnbr_base_fd(int nbr, char *base, int fd);
 
 struct		s_list
 {
-	void			*content;
+	void			*data;
 	struct s_list	*next;
+	struct s_list	*prev;
 };
 typedef struct s_list		t_list;
 
@@ -99,7 +100,9 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
+t_list		*ft_lstnew_circ(void *content);
+t_list		*ft_lstget(t_list *lst, int i);
+t_list		*ft_lstpop(t_list **lst);
 /*
 **			===== ADDED =====
 */
