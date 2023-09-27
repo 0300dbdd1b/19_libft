@@ -1,12 +1,12 @@
 # Libft
 
-![19logo](https://github.com/Marcaday/19_Subjects/blob/master/19logo.png)
+![19logo](https://github.com/0300dbdd1b/19_Subjects/blob/master/19logo.png)
 19 Coding School project
 
 "The aim of this project is to code a C library regrouping usual functions that
 you’ll be allowed to use in all your other projects."
 
- - [subject here](https://github.com/Marcaday/19_Subjects/blob/master/libft_FR.pdf)
+ - [subject here](https://github.com/0300dbdd1b/19_Subjects/blob/master/libft_FR.pdf)
 ## Status
 
 ### Success
